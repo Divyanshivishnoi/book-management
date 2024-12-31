@@ -1,23 +1,23 @@
 //schema
-const mongoose=require('mongoose')
-const bookSchema = new mongoose.Schema({
-  title: {
+const mongoose=require('mongoose')  //import the mongoose
+const bookSchema = new mongoose.Schema({   //creating a schema for a book
+  title: {      //title of the bbok
     type: String,
     required: true,
   },
-  author: {
+  author: {    //author of the book
     type: String,
     required: true,
   },
-  publishedDate: {
+  publishedDate: {     //the data of the bbok which was published
     type: Date,
     default: Date.now,
   },
 
-  genre: {
+  genre: {        //genre of the book
     type: String,
   },
-  price: {
+  price: {            //price of the book
     type: Number,
     min: [0, "price must be a positive value"],
     validate: {
@@ -26,5 +26,5 @@ const bookSchema = new mongoose.Schema({
     },
   },
 });
-
+//exporting the book model so it can be used in other files
 module.exports = mongoose.model("Book", bookSchema);
